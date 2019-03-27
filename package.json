@@ -1,0 +1,39 @@
+{
+  "name": "livebox-node-remote",
+  "version": "0.0.1",
+  "description": "Control your livebox with node over the LAN",
+  "main": "app.js",
+  "dependencies": {
+    "request": "^2.88.0"
+  },
+  "devDependencies": {
+    "@types/request": "^2.48.1",
+    "ts-node": "^8.0.3",
+    "tslint": "^5.14.0",
+    "typescript": "^3.3.4000"
+  },
+  "scripts": {
+    "start": "npm run serve",
+    "build": "npm run build-sass && npm run build-ts && npm run tslint && npm run copy-static-assets",
+    "serve": "node dist/app.js",
+    "watch-node": "nodemon dist/app.js",
+    "watch": "concurrently -k -p \"[{name}]\" -n \"Sass,TypeScript,Node\" -c \"yellow.bold,cyan.bold,green.bold\" \"npm run watch-sass\" \"npm run watch-ts\" \"npm run watch-node\"",
+    "test": "jest --forceExit --coverage --verbose",
+    "watch-test": "npm run test -- --watchAll",
+    "build-ts": "tsc",
+    "watch-ts": "tsc -w",
+    "build-sass": "node-sass src/public/css/main.scss dist/public/css/main.css",
+    "watch-sass": "node-sass -w src/public/css/main.scss dist/public/css/main.css",
+    "tslint": "tslint -c tslint.json -p tsconfig.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ngombert/livebox-Node-Remote.git"
+  },
+  "author": "Nicolas GOMBERT <gombert.n@gmail.com>",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/ngombert/livebox-Node-Remote/issues"
+  },
+  "homepage": "https://github.com/ngombert/livebox-Node-Remote#readme"
+}
